@@ -4,5 +4,5 @@ from ..main.views import Signin
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/', Signin.as_view())
+    path('user/login/', Signin.as_view())
 ]
