@@ -15,9 +15,9 @@ class StaffUser(models.Model):
 class Subject(models.Model):
     name = models.CharField(max_length=30)
     full_name = models.CharField(max_length=90)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    student = models.ManyToManyField(User, related_name='subject')
 
 class Teacher(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='teacher')
-    subjects = models.ManyToManyField(Subject,related_name='subject')
+    subjects = models.ManyToManyField(Subject,related_name='teacher')
 
