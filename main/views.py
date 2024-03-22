@@ -10,7 +10,7 @@ from django.contrib.auth.hashers import make_password
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
 from rest_framework.authentication import TokenAuthentication, BasicAuthentication
 
-from .models import Subjectss
+from .models import Topic, Teachers
 from .serialazers.serialazer import UserSerializer, SubjectSerializer
 
 
@@ -29,8 +29,13 @@ class GetUser(APIView):
     '''get subjects for a student'''
     def get(self, request):
         user = request.user
-        subjects = Subjectss.objects.filter(student=user)
+        subjects = Topic.objects.filter(student=user)
         subjects = SubjectSerializer(subjects,many=True)
         return Response(subjects.data)
+    '''get teachers by subject id'''
+    def post(self, request,id:str):
+        lessons = Topic.objects.get(id=id)
+        teachers = SubjectSerializer(lessons).data['teachers']
+        return Response(teachers)
 
 
