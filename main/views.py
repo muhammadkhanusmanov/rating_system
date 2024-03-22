@@ -10,6 +10,9 @@ from django.contrib.auth.hashers import make_password
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
 from rest_framework.authentication import TokenAuthentication, BasicAuthentication
 
+from .models import Subjectss
+from .serialazers.serialazer import UserSerializer, SubjectSerializer
+
 
 class Signin(APIView):
     authentication_classes = [BasicAuthentication]
@@ -20,3 +23,14 @@ class Signin(APIView):
             return Response({'Status': user.staff.staff,'Token': token.key},status=status.HTTP_200_OK)
         except:
             return Response({'Status': 'User not found', 'Token':None},status=status.HTTP_404_NOT_FOUND)
+
+class GetUser(APIView):
+    authentication_classes = [TokenAuthentication]
+    '''get subjects for a student'''
+    def get(self, request):
+        user = request.user
+        subjects = Subjectss.objects.filter(student=user)
+        subjects = SubjectSerializer(subjects,many=True)
+        return Response(subjects.data)
+
+
