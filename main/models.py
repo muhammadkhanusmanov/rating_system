@@ -12,10 +12,10 @@ class StaffUser(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='staff')
 
 
-class Subjects(models.Model):
+class Subjectss(models.Model):
     name = models.CharField(max_length=30)
     full_name = models.CharField(max_length=90)
-    teachers = models.ForeignKey(User, on_delete=models.CASCADE)
+    teachers = models.ManyToManyField(User)
     student = models.ManyToManyField(User, related_name='subject')
 
 
