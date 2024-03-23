@@ -40,6 +40,6 @@ class Marks(models.Model):
     subject = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='marks')
 
     def __str__(self) -> str:
-        return f'{self.teacher} - {self.subject}'
+        return f'{self.teacher.user.username} - {self.subject.full_name}'
 
 
