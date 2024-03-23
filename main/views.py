@@ -10,8 +10,8 @@ from django.contrib.auth.hashers import make_password
 from rest_framework.permissions import IsAuthenticated,IsAdminUser
 from rest_framework.authentication import TokenAuthentication, BasicAuthentication
 
-from .models import Topic, Teachers
-from .serialazers.serialazer import UserSerializer, SubjectSerializer
+from .models import Topic, Teachers, Marks
+from .serialazers.serialazer import UserSerializer, SubjectSerializer,MarksSerializer
 
 
 class Signin(APIView):
@@ -37,5 +37,30 @@ class GetUser(APIView):
         lessons = Topic.objects.get(id=id)
         teachers = SubjectSerializer(lessons).data['teachers']
         return Response(teachers)
+
+
+class MarksView(APIView):
+    authentication_classes = [TokenAuthentication]
+    '''put mark'''
+    def put(self,request):
+        user = request.user
+        data = request.data
+        teacher = Teachers.objects.get(user=data['teacher'])
+        subject = Topic.objects.get(id=data['subject'])
+        mark = Marks.objects.create(
+                marks = data['marks'],
+                comment = data.get('comment', None),
+                semester = data['semester'],
+                student = user,
+                teacher = teacher,
+                subject = subject,
+            )
+        mark.save()
+        print(mark)
+        return Response({'success': True})
+        
+        
+
+
 
 
