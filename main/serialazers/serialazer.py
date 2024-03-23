@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer, SerializerMethodField, ReadOnlyField
-from ..models import Topic, StaffUser,Teachers
+from ..models import Topic, StaffUser,Teachers, Marks
 from django.contrib.auth.models import User
 
 class StaffSerializer(ModelSerializer):
@@ -25,3 +25,8 @@ class SubjectSerializer(ModelSerializer):
     class Meta:
         model = Topic
         fields = ['id','name','full_name','img','teachers']
+
+class MarksSerializer(ModelSerializer):
+    class Meta:
+        model = Marks
+        fields = ['id','marks','comment','teacher','subject','student','semester']
