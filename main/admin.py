@@ -1,8 +1,8 @@
 from django.contrib import admin
 from .models import (
-    StaffUser,Topic,Teachers
+    StaffUser,Topic,Teachers,Marks
 )
 
 admin.site.register([
-    StaffUser,Teachers,Topic       
+    StaffUser,Teachers,Topic,Marks   
 ])
