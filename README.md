@@ -2,5 +2,6 @@
 
 ## Enpoints
 
-| enpoint | method | description |
-|---------|--------|-------------|
+| ENPOINT | METHOD | DESCRPTION |
+|---------|--------|------------|
+| user/login/ | Post | Basic Authentication |
