@@ -8,6 +8,7 @@
 | student/subjects/ | Get | get student's subjects by token authentication |
 | teachers/<str:id> | Post | Get subject's teacher by token authentication<br/>**id** - subject id |
 | putmark/ | Put | Put the mark to teacher by student |
+| getmarkarchive/ | Post | Get the mark archive of the student<br/>by token authentaction|
 
 
 ## Useing enpoints
@@ -22,4 +23,4 @@
 > ##### Request
 >> `Authorization > Token Authentication` <br/> `Body > None`
 > ##### Response
->> `['id','name','full_name','img','teachers']`
+>> `[{'id','name','full_name','img','teachers'}...]`
