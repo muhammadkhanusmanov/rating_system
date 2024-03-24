@@ -12,10 +12,14 @@
 
 ## Useing enpoints
 
-> #### user/login/
+#### user/login/
 > ##### Request
 >> `Authoration > Basic Authentication` <br/>`Body > None`
+> ##### Response
+>> `Token:str, Status: User role`
 
-> #### student/subjects/
+#### student/subjects/
 > ##### Request
 >> `Authorization > Token Authentication` <br/> `Body > None`
+> ##### Response
+>> `['id','name','full_name','img','teachers']`
