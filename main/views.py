@@ -45,20 +45,36 @@ class MarksView(APIView):
     def put(self,request):
         user = request.user
         data = request.data
-        teacher = Teachers.objects.get(user=data['teacher'])
-        subject = Topic.objects.get(id=data['subject'])
-        mark = Marks.objects.create(
-                marks = data['marks'],
-                comment = data.get('comment', None),
-                semester = data['semester'],
-                student = user,
-                teacher = teacher,
-                subject = subject,
-            )
-        mark.save()
-        print(mark)
-        return Response({'success': True})
-        
+        try:
+            teacher = Teachers.objects.get(user=data['teacher'])
+            subject = Topic.objects.get(id=data['subject'])
+            mark = Marks.objects.create(
+                    marks = data['marks'],
+                    comment = data.get('comment', None),
+                    semester = data['semester'],
+                    student = user,
+                    teacher = teacher,
+                    subject = subject,
+                )
+            mark.save()
+            print(mark)
+            return Response({'success': True})
+        except:
+            return Response({'success': False},status=status.HTTP_400_BAD_REQUEST)
+    
+    '''get archive marks'''
+    def post(self, request):
+        user = request.user
+        data = request.data
+        try:
+            teacher = Teachers.objects.get(id=data['teach'])
+            sub = Topic.objects.get(id = data['sub'])
+            marks = Marks.objects.filter(student=user,teacher=teacher,subject=sub)
+            marks = MarksSerializer(marks,many=True).data
+            return Response(marks,status=status.HTTP_200_OK)
+        except:
+            return Response({'succes':False},status=status.HTTP_400_BAD_REQUEST)
+
         
 
 
