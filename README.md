@@ -1,5 +1,9 @@
 # rating_system
 
+## Database schema
+
+![alt Database](https://github.com/muhammadkhanusmanov/rating_system/blob/main/db.png?raw=true)
+
 ## Enpoints
 
 | ENPOINT | METHOD | DESCRPTION |
