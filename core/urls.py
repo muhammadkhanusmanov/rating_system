@@ -9,5 +9,6 @@ urlpatterns = [
     path('user/login/', Signin.as_view()),
     path('student/subjects/',GetUser.as_view()),
     path('teachers/<str:id>',GetUser.as_view()),
-    path('putmark/',MarksView.as_view())
+    path('putmark/',MarksView.as_view()),
+    path('getmarkarchive/',MarksView.as_view())
 ] + static( settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
