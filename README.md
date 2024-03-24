@@ -13,4 +13,6 @@
 ## Useing enpoints
 
 > #### user/login/
->> `Authoration > Basic Authentication` <br/>`Body > None` 
+>> `Authoration > Basic Authentication` <br/>`Body > None`
+> #### student/subjects/
+>> `Authorization > Token Authentication` <br/> `Body > None`
