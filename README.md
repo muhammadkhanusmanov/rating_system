@@ -13,4 +13,4 @@
 ## Useing enpoints
 
 > #### user/login/
->> `Authoration > Basic Authentication <br/> Body > None` 
+>> `Authoration > Basic Authentication` <br/>`Body > None` 
