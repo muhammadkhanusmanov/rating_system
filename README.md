@@ -13,6 +13,9 @@
 ## Useing enpoints
 
 > #### user/login/
+> ##### Request
 >> `Authoration > Basic Authentication` <br/>`Body > None`
+
 > #### student/subjects/
+> ##### Request
 >> `Authorization > Token Authentication` <br/> `Body > None`
